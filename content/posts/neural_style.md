@@ -2,6 +2,7 @@
 title: "Neural Style Transfer Explained"
 date: 2018-04-29T10:20:35+05:30
 draft: false
+tags: ["Deep Learning"]
 ---
 
 Welcome Everyone to the journey into Neural Style transfer. Let's dive. :smiley:

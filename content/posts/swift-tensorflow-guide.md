@@ -2,6 +2,7 @@
 title: "Up and Running with Swift for Tensorflow on Ubuntu 18.04 LTS Bionic Beaver"
 date: 2019-03-31T10:52:52+05:30
 draft: false
+tags: ["Deep Learning", "swift", "tensorflow"]
 ---
 
 <p align="center">
