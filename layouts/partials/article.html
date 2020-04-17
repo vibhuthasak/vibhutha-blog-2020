@@ -19,7 +19,11 @@
       {{- partial "post/copyright.html" . }}
     </div>
   </article>
-  {{- partial "post/comment.html" . }}
+  {{if ne .File.BaseFileName "about"}}
+    {{- partial "post/comment.html" . }}
+  {{end}}
 </div>
-{{- partial "post/nav.html" . }}
-{{- partial "post/donate.html" . }}
+{{if ne .File.BaseFileName "about"}}
+  {{- partial "post/nav.html" . }}
+  {{- partial "post/donate.html" . }}
+{{end}}

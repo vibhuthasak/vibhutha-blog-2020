@@ -5,27 +5,26 @@ draft: False
 type: "about"
 ---
 
-<br>
-I am an enthusiast in **Robotics**, **Machine learning** and **Computer vision** fields.
-
-### About myself:
-
-- Born in Jan 1994
-- Location : Colombo, Sri Lanka
+- Born in 18 Jan 1994 🇱🇰
 - Education :
   - Ananda College, Colombo, SL (High School 1999 - 2013)
   - General Sir John Kotelawala Defence University, SL (B.Sc in Engineering 2014 - 2018)
 - Work :
-  - Senior Executive @ [Dialog Axiata PLC](https://www.dialog.lk/) - (2018 June to Present)
-  - Engineering Intern @ [DSI Samson Group - Sri Lanka](https://www.linkedin.com/company/dsi-samson-group---sri-lanka/) - (2016 June to 2016 December)
+  - [DSI Samson Group - Sri Lanka](https://www.linkedin.com/company/dsi-samson-group---sri-lanka/)
+    - Engineering Intern - (2016 June to 2016 December)
+  - [Dialog Axiata PLC](https://www.dialog.lk/)
+    - Senior Executive - (2018 June to 2020 Jan)
+    - Specialist - (2020 Jan to Present)
 - Things I truly :heart:
-  - Being a Wolf :wolf:
   - Honesty
-  - Believe in myself
-  - Self Learning and Teamwork
-  - Positive and Creative people
-  - Teach/Share what I know.
-  - Pop and Country Music :musical_note:
+  - Integrity
+  - Hardwork
+  - Self learning and teamwork
+  - People with positive and creative mindset
+  - Teach and share
+
+<br>
+
 - Favourite Quotes:
 
 > The cave you fear to enter holds the treasure you seek.
