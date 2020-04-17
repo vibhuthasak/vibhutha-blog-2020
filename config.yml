@@ -1,6 +1,7 @@
 baseURL: https://vibhuthasak.github.io/
 theme: pure
 title: Vibhutha Kumarage
+unsafe: true
 defaultContentLanguage: en
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
@@ -173,3 +174,8 @@ params:
   widgets:
     - tag
     - recent_posts
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
