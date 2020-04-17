@@ -1,0 +1,10 @@
+<div class="article-meta">
+  {{ .Scratch.Set "class_name" "article-date" }}
+  {{- partial "post/date.html" . }}
+  {{- partial "post/category.html" . }}
+  {{- partial "post/tag.html" . }}
+  {{- partial "post/pv.html" . }}
+  <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="{{ .RelPermalink }}#comments"
+      class="article-comment-link">{{T "article_comments" }}</a></span>
+  {{- partial "post/wc.html" . }}
+</div>
