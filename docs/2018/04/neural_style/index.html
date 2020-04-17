@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Neural Style Transfer Explained - Vibhutha Kumarage
+      </title>
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  
+  <meta name="theme-color" content="#000000" />
+  
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <meta name="description" content="Welcome Everyone to the journey into Neural Style transfer. Let&amp;rsquo;s dive. 😃
+Level one : Introduction With the rise of Deep Learning technology people invented awesome things using this technology. Neural style transfer (aka Artistic style transfer) is one of the amazing works. It is introduced in 2015 by Gatys et al. I&amp;rsquo;m not going to make you sleepy by discussing details in the paper at this level. Let&amp;rsquo;s talk about the things can be done using the technology." />
+  <meta name="generator" content="Hugo 0.69.0 with theme pure" />
+  <title>Neural Style Transfer Explained - Vibhutha Kumarage</title>
+  
+  
+  <link rel="stylesheet" href="https://vibhuthasak.github.io/css/style.min.1b6352f73b6758d54c234dd4359922a88eb198ba351b29f205d0ee5762a7ef61.css">
+  
+  <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+  <meta property="og:title" content="Neural Style Transfer Explained" />
+<meta property="og:description" content="Welcome Everyone to the journey into Neural Style transfer. Let&rsquo;s dive. 😃
+Level one : Introduction With the rise of Deep Learning technology people invented awesome things using this technology. Neural style transfer (aka Artistic style transfer) is one of the amazing works. It is introduced in 2015 by Gatys et al. I&rsquo;m not going to make you sleepy by discussing details in the paper at this level. Let&rsquo;s talk about the things can be done using the technology." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vibhuthasak.github.io/2018/04/neural_style/" />
+<meta property="article:published_time" content="2018-04-29T10:20:35+05:30" />
+<meta property="article:modified_time" content="2018-04-29T10:20:35+05:30" />
+<meta itemprop="name" content="Neural Style Transfer Explained">
+<meta itemprop="description" content="Welcome Everyone to the journey into Neural Style transfer. Let&rsquo;s dive. 😃
+Level one : Introduction With the rise of Deep Learning technology people invented awesome things using this technology. Neural style transfer (aka Artistic style transfer) is one of the amazing works. It is introduced in 2015 by Gatys et al. I&rsquo;m not going to make you sleepy by discussing details in the paper at this level. Let&rsquo;s talk about the things can be done using the technology.">
+<meta itemprop="datePublished" content="2018-04-29T10:20:35&#43;05:30" />
+<meta itemprop="dateModified" content="2018-04-29T10:20:35&#43;05:30" />
+<meta itemprop="wordCount" content="727">
+
+
+
+<meta itemprop="keywords" content="Deep Learning," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Neural Style Transfer Explained"/>
+<meta name="twitter:description" content="Welcome Everyone to the journey into Neural Style transfer. Let&rsquo;s dive. 😃
+Level one : Introduction With the rise of Deep Learning technology people invented awesome things using this technology. Neural style transfer (aka Artistic style transfer) is one of the amazing works. It is introduced in 2015 by Gatys et al. I&rsquo;m not going to make you sleepy by discussing details in the paper at this level. Let&rsquo;s talk about the things can be done using the technology."/>
+
+  <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
+
+  <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+  </head>
+
+  
+  
+
+  <body class="main-center theme-white" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      <div class="profile-block text-center">
+        <a id="avatar">
+          <img style="border-radius: 10px;" src="/img/avatar.jpg">
+        </a>
+        <h2 class="hidden-xs hidden-sm" style="font-size: 30px;">Vibhutha Kumarage</h2>
+        <h2 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker" style="margin-right: 5px;"></i>Colombo, Sri Lanka</small>
+      </div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+          <li class="menu-item menu-item-home">
+              <a href="/">
+                  <i class="icon icon-home-fill"></i>
+                <span class="menu-title">Home</span>
+              </a>
+          </li>
+          <li class="menu-item menu-item-archives">
+              <a href="/posts/">
+                  <i class="icon icon-folder"></i>
+                <span class="menu-title">Archives</span>
+              </a>
+          </li>
+          <li class="menu-item menu-item-about">
+              <a href="/about/">
+                  <i class="icon icon-cup-fill"></i>
+                <span class="menu-title">About</span>
+              </a>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <div class="widget">
+    <h3 class="widget-title"> Tags</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://vibhuthasak.github.io/tags/deep-learning/" class="tag-list-link">deep-learning</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://vibhuthasak.github.io/tags/swift/" class="tag-list-link">swift</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://vibhuthasak.github.io/tags/tensorflow/" class="tag-list-link">tensorflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+<div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://vibhuthasak.github.io/2019/03/swift-tensorflow-guide/" class="title">Up and Running with Swift for Tensorflow on Ubuntu 18.04 LTS Bionic Beaver</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2019-03-31 10:52:52 &#43;0530 &#43;0530" itemprop="datePublished">2019-03-31</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://vibhuthasak.github.io/2018/04/neural_style/" class="title">Neural Style Transfer Explained</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2018-04-29 10:20:35 &#43;0530 &#43;0530" itemprop="datePublished">2018-04-29</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">Catalogue</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2018/04/neural_style/"
+    >Neural Style Transfer Explained</a
+  >
+</h1>
+
+      <div class="article-meta">
+  
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://vibhuthasak.github.io/2018/04/neural_style/" class="article-date">
+  <time datetime="2018-04-29 10:20:35 &#43;0530 &#43;0530" itemprop="datePublished">2018-04-29</time>
+</a>
+</span>
+  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/deep-learning/"> Deep Learning </a>
+  </span>
+
+  <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2018/04/neural_style/#comments"
+      class="article-comment-link">Comments</a></span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 4minutes </span>
+</div>
+      
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>Welcome Everyone to the journey into Neural Style transfer. Let&rsquo;s dive. 😃</p>
+<h2 id="level-one--introduction">Level one : Introduction</h2>
+<p>With the rise of Deep Learning technology people invented awesome things using this technology. Neural style transfer (aka Artistic style transfer) is one of the amazing works. It is introduced in 2015 by <a href="https://arxiv.org/abs/1508.06576">Gatys et al</a>. I&rsquo;m not going to make you sleepy by discussing details in the paper at this level. Let&rsquo;s talk about the things can be done using the technology. I believe you all like to draw your painting in your favorite artist&rsquo;s style. It not an easy task if you do not have enough skills in painting. Don&rsquo;t worry, Deep Learning have power to <a href="https://www.britannica.com/topic/reincarnation">reincarnate</a> your favorite artist and make him/her to draw your painting. Looking amazing right?. Let me show you an example. <br></p>
+<p>Here is your Image(In literature it is known as <strong>Content Image</strong>):</p>
+<p align="center">
+<img src="/img/nn_style/nn_content.png" alt="Content Image" />
+</p>
+<p>And this is your favorite artist&rsquo;s painting(Known as <strong>Style Image</strong>):</p>
+<p align="center">
+<img src="/img/nn_style/nn_style.png" alt="Style Image">
+</p>
+<blockquote>
+<p>Now Let&rsquo;s do the Magic ✨</p>
+</blockquote>
+<p>This the Resulted image:</p>
+<p align="center">
+<img src="/img/nn_style/nn_result.png" alt="Result Image">
+</p>
+<p>Looking great right?. Let&rsquo;s move to the <strong>level two</strong>.</p>
+<br>
+<h2 id="level-two--understanding-concepts">Level two : Understanding Concepts</h2>
+<p>From this level onwards you need to have some understanding in <strong>How Convolutional Neural Networks work</strong>. If you dont have, Don&rsquo;t feel worry here are some resources to learn CNNs.</p>
+<ol>
+<li><a href="https://cs231n.github.io/understanding-cnn/">Understanding CNN</a> (from cs231n)</li>
+<li><a href="https://www.youtube.com/watch?v=FTr3n7uBIuE">Convolutional Neural Networks</a> (by Siraj Ravel)</li>
+</ol>
+<p>For those who have understood CNN, follow me. Others, follow above links and See you in couple of days 👋</p>
+<p>In any Neural Network Based model there are three main components. Namely,</p>
+<ol>
+<li>Data.</li>
+<li>Network Architecture.</li>
+<li>Loss Function.</li>
+</ol>
+<p>Let&rsquo;s understand each components above and how they are related to our topic.</p>
+<h3 id="data"><strong>Data</strong></h3>
+<p>For this task we need three inputs. They are,</p>
+<ul>
+<li>Style Image (S_).</li>
+<li>Content Image (C_).</li>
+<li>Random Noise (G_).</li>
+</ul>
+<p>Both Style Image, Content Image are explained in level one. I hope you understood. Let&rsquo;s talk about <em>Random Noise</em>. In simple words, this is the initialization of the final generated image.</p>
+<p align="center">
+<img src="/img/nn_style/random_noise.png" alt="Random Noise">
+</p>
+<h3 id="network-architecture"><strong>Network architecture</strong></h3>
+<p>For this task we use pre-trained CNN such as VGG-16 / VGG-19.</p>
+<p align="center">
+<img src="/img/nn_style/vgg-16.png" alt="Random Noise">
+</p>
+<h3 id="loss-function"><strong>Loss Function</strong></h3>
+<p>The loss function for the whole operation is as follows,</p>
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; Loss(G)= \alpha*Loss(C,G) + \beta*Loss(S,G)" />
+</p>
+<ul>
+<li><em>Loss(G)</em> : Total Loss</li>
+<li><em>Loss(C,G)</em> : Content Loss</li>
+<li><em>Loss(S,G)</em> : Style Loss</li>
+<li><em>alpha</em> and <em>beta</em> are hyper parameters</li>
+</ul>
+<p>In a simplified way, neural style transfer can be expressed in 2 lines of steps.</p>
+<ol>
+<li>Initialize Generated Image(G) randomly (This is the noise image).</li>
+<li>Use an optimizer to minimize <em>Loss(G)</em> and update <strong>G</strong></li>
+</ol>
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; G = G - \gamma * \frac{d}{d(G)}(Loss(G))" />
+</p>
+<h4 id="content-loss">Content Loss</h4>
+<p>We will use layer[L] of the CNN to compute the content loss. The layer[L] should be taken layer neither too shallow nor too deep in the neural network. Now we feed both Content Image and Random Noise(Generated Image) into the CNN. We need to get activations of layer[L] for both Images. Let&rsquo;s say, <br>
+<strong><em>a[C]</em></strong> is the activation of the Content Image and <br>
+<strong><em>a[G]</em></strong> is the activation of the Generated Image at layer[L]</p>
+<p>if the difference between <em>a[C]</em> and <em>a[G]</em> is smaller, we can say that both Images have similar content. The metric we use to measure the difference is RMSE.</p>
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; Loss(C,G) = || a[C] - a[G] ||_F^2" />
+</p>
+<h4 id="style-loss">Style Loss</h4>
+<p>For Content Loss calculations we used only Layer[L]. <br>
+But In Style Loss Calculation we use multiple layers. But for now we look at how to calculate Style Loss in one layer(Layer[L]).<br>
+Like above, we need to feed both Style Image and Generated Image into our CNN and get their activations at the Layer[L]. Instead of calculating RMSE directly using those activations, we use something different in this case. That thing is, we are checking <strong>how activations are correlated across different channels in Layer[L]</strong>. In the literature it is known as <em>Gram Matrix</em> or <em>Style Matrix</em>. We need to calculate Gram Matrix for both Style and Generated Image. Gram Matrix calculation of ith and jth position of channel k in the Layer[L] for style activations is as follows.</p>
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; G_{ij}^{[L][S]} = \sum_k a_{ik}^{[S]} . a_{jk}^{[S]}" />
+</p>
+<p>i=(1 to nh), j=(1 to nw) and k=(1 to nc) <br></p>
+<p>After calculating Gram Matrix for both Style and Generated image, We use RMSE to calculate the difference at Layer[L]. It is similar what we do in Content Loss.</p>
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; Loss(S,G)^{[L]} = || G^{[S][L]} - G^{[G][L]} ||_F^2" />
+</p>
+<p>For more visually pleasing results we combine style costs for different layers.</p>
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; Loss(S,G) = \sum_l \lambda * Loss(S,G)^{[l]}" />
+</p>
+<p>Layer l = [conv1, conv2, conv3 &hellip;.. ]</p>
+<p>Now we can use following equation to calculate the Total Loss,</p>
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; Loss(G)= \alpha*Loss(C,G) + \beta*Loss(S,G)" />
+</p>
+<p>Use your favorite optimizer to minimize the total loss and Update the Noise Image.</p>
+<br>
+<br>
+Thank you for coming this journey with me. See you in another post. Until then, Happy Learning!!
+
+    </div>
+    <div class="article-footer">
+    </div>
+  </article>
+  
+<section id="comments">
+</section>
+
+  
+</div>
+<nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://vibhuthasak.github.io/about/" title="About"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;Older</span></a>
+            </li>
+            <li class="next">
+                <a href="https://vibhuthasak.github.io/2019/03/swift-tensorflow-guide/"
+                    title="Up and Running with Swift for Tensorflow on Ubuntu 18.04 LTS Bionic Beaver"><span>Newer&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="Catalogue" role="button">
+                    <span>[&nbsp;</span><span>Catalogue</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="facebook,twitter"
+                data-mobile-sites=""></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://www.facebook.com/vibhuthasak" target="_blank" title="facebook" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-facebook"></i></a></li>
+    <li><a href="https://github.com/vibhuthasak" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://stackoverflow.com/users/7029721/bodhi94" target="_blank" title="stackoverflow" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-stackoverflow"></i></a></li>
+    <li><a href="https://twitter.com/vibhuthasak" target="_blank" title="twitter" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-twitter"></i></a></li>
+</ul>
+  <div class="copyright">
+    <p class="copyright">© 2020 Vibhutha Kumarage
+      <br><a href="https://creativecommons.org/licenses/by/4.0">All Rights Reserved</a>.
+      <br>Theme By <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>
+      <br>Built with <a href="https://gohugo.io/">Hugo</a>
+    </p>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://vibhuthasak.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://vibhuthasak.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            ROOT_URL: 'https:\/\/vibhuthasak.github.io\/',
+            CONTENT_URL: 'https:\/\/vibhuthasak.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://vibhuthasak.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

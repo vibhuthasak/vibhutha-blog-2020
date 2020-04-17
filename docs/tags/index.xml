@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Vibhutha Kumarage</title>
+    <link>https://vibhuthasak.github.io/tags/</link>
+    <description>Recent content in Tags on Vibhutha Kumarage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 31 Mar 2019 10:52:52 +0530</lastBuildDate>
+    
+        <atom:link href="https://vibhuthasak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Up and Running with Swift for Tensorflow on Ubuntu 18.04 LTS Bionic Beaver</title>
+      <link>https://vibhuthasak.github.io/2019/03/swift-tensorflow-guide/</link>
+      <pubDate>Sun, 31 Mar 2019 10:52:52 +0530</pubDate>
+      
+      <guid>https://vibhuthasak.github.io/2019/03/swift-tensorflow-guide/</guid>
+      <description>This blog post will guide through the process of install Swift for Tensorflow on Ubuntu 18.04 (Local Machine/VM instance) and Start Coding with Swift on the Jupyter Notebook like you do in Python for Tensorflow.
+Step 01: Installing CUDA There are several versions of Swift-TF available to install as you prefer. Namely (on 30th March 2019), CPU only version, CUDA 9.2 version and CUDA 10.0 version. This section is only focused on with CUDA installation.</description>
+    </item>
+    
+    <item>
+      <title>Neural Style Transfer Explained</title>
+      <link>https://vibhuthasak.github.io/2018/04/neural_style/</link>
+      <pubDate>Sun, 29 Apr 2018 10:20:35 +0530</pubDate>
+      
+      <guid>https://vibhuthasak.github.io/2018/04/neural_style/</guid>
+      <description>Welcome Everyone to the journey into Neural Style transfer. Let&amp;rsquo;s dive. 😃
+Level one : Introduction With the rise of Deep Learning technology people invented awesome things using this technology. Neural style transfer (aka Artistic style transfer) is one of the amazing works. It is introduced in 2015 by Gatys et al. I&amp;rsquo;m not going to make you sleepy by discussing details in the paper at this level. Let&amp;rsquo;s talk about the things can be done using the technology.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://vibhuthasak.github.io/about/</link>
+      <pubDate>Thu, 26 Apr 2018 20:23:28 +0530</pubDate>
+      
+      <guid>https://vibhuthasak.github.io/about/</guid>
+      <description>Born in 18 Jan 1994 🇱🇰 Education :  Ananda College, Colombo, SL (High School 1999 - 2013) General Sir John Kotelawala Defence University, SL (B.Sc in Engineering 2014 - 2018)   Work :  DSI Samson Group - Sri Lanka  Engineering Intern - (2016 June to 2016 December)   Dialog Axiata PLC  Senior Executive - (2018 June to 2020 Jan) Specialist - (2020 Jan to Present)     Things I truly ❤️  Honesty Integrity Hardwork Self learning and teamwork People with positive and creative mindset Teach and share     Favourite Quotes:   The cave you fear to enter holds the treasure you seek.</description>
+    </item>
+    
+  </channel>
+</rss>
