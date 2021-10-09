@@ -9,7 +9,7 @@ paginate: 7
 enableEmoji: true
 PygmentsCodeFences: false
 publishDir: public
-googleAnalytics: ""      # UA-XXXXXXXX-X 
+googleAnalytics: "UA-150909255-1"      # UA-XXXXXXXX-X 
 permalinks:
   posts: /:year/:month/:filename/
 
@@ -91,7 +91,6 @@ params:
       links:
         github: https://github.com/vibhuthasak
         twitter: https://twitter.com/vibhuthasak
-        facebook: https://www.facebook.com/vibhuthasak
         stackoverflow: https://stackoverflow.com/users/7029721/bodhi94
       link_tooltip: true # enable the social link tooltip, options: true, false
   # Site

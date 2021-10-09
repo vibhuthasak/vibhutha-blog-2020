@@ -5,16 +5,16 @@ draft: False
 type: "about"
 ---
 
-- Born in 18 Jan 1994 🇱🇰
-- Education :
-  - Ananda College, Colombo, SL (High School 1999 - 2013)
-  - General Sir John Kotelawala Defence University, SL (B.Sc in Engineering 2014 - 2018)
 - Work :
+  - [Dialog Axiata PLC](https://www.dialog.lk/)
+    - Assistant Manager - (2021 Sept to Present)
+    - Specialist - (2020 Jan to 2021 Sept)
+    - Senior Executive - (2018 June to 2020 Jan)
   - [DSI Samson Group - Sri Lanka](https://www.linkedin.com/company/dsi-samson-group---sri-lanka/)
     - Engineering Intern - (2016 June to 2016 December)
-  - [Dialog Axiata PLC](https://www.dialog.lk/)
-    - Senior Executive - (2018 June to 2020 Jan)
-    - Specialist - (2020 Jan to Present)
+- Education :
+  - General Sir John Kotelawala Defence University, SL (B.Sc in Engineering 2014 - 2018)
+  - Ananda College, Colombo, SL (High School 1999 - 2013)
 - Things I truly :heart:
   - Honesty
   - Integrity
