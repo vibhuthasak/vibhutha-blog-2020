@@ -9,7 +9,7 @@ paginate: 7
 enableEmoji: true
 PygmentsCodeFences: false
 publishDir: public
-googleAnalytics: "UA-150909255-1"      # UA-XXXXXXXX-X 
+googleAnalytics: UA-150909255-1      # UA-XXXXXXXX-X 
 permalinks:
   posts: /:year/:month/:filename/
 
