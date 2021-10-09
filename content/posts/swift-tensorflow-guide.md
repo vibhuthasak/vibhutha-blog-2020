@@ -4,18 +4,18 @@ date: 2019-03-31T10:52:52+05:30
 draft: false
 tags: ["Deep Learning", "swift", "tensorflow"]
 ---
-
+ 
 <p align="center">
 <img src="/img/tf-swift/titleImage.png" alt="Title Image"/>
 </p>
-
-This blog post will guide through the process of install **Swift for Tensorflow** on Ubuntu 18.04 (Local Machine/VM instance) and Start Coding with **Swift** on the **Jupyter Notebook** like you do in **Python for Tensorflow**.
-
+ 
+This blog post will guide you through the process of install **Swift for Tensorflow** on Ubuntu 18.04 (Local Machine/VM instance) and Start Coding with **Swift** on the **Jupyter Notebook** like you do in **Python for Tensorflow**.
+ 
 ### Step 01: Installing CUDA
-There are several versions of Swift-TF available to install as you prefer. Namely (on 30th March 2019), CPU only version, CUDA 9.2 version and CUDA 10.0 version. This section is only focused on with CUDA installation. You can skip to the next step if you prefer CPU only installation.
+There are several versions of Swift-TF available to install as you prefer. Namely (on 30th March 2019), CPU only version, CUDA 9.2 version and CUDA 10.0 version. This section is only focused on CUDA installation. You can skip to the next step if you prefer CPU only installation.
 <br/>
 <br/>
-If you have been working on Tensorflow or PyTorch, CUDA might be installed on your ubuntu machine. You can check the installed CUDA version using the below commmand
+If you have been working on Tensorflow or PyTorch, CUDA might be installed on your ubuntu machine. You can check the installed CUDA version using the below command
 ```console
 (base) vkartz@ubuntu-dl:~$ nvcc --version
 nvcc: NVIDIA (R) Cuda compiler driver
@@ -34,10 +34,10 @@ Command 'nvcc' not found, but can be installed with:
 apt install nvidia-cuda-toolkit
 Please ask your administrator.
 ```
-* This error have two possibilities: 
-  1. Your machine **have CUDA installed** but Environment variable is not set.
+* This error has two possibilities: 
+  1. Your machine **have CUDA installed** but the Environment variable is not set.
   2. Your machine **do not have CUDA installed**.
-
+ 
 _If Case #1 (Env variable is not set) :_ <br/>
 Use the below command to locate your cuda installation on your machine
 ```console
@@ -65,31 +65,31 @@ Cuda compilation tools, release 10.0, V10.0.130
 _If Case #2 (CUDA not installed) :_ <br/>
 To install CUDA on your machine properly, Go to [Tensorflow CUDA installation GUIDE](https://www.tensorflow.org/install/gpu#install_cuda_with_apt) and follow their instructions on CUDA v10.0 installation.<br/>
 **If this went fine, You can go to the next step :smiley:** <br/><br/>
-
+ 
 ### Step 02: Installing Swift for Tensorflow
 You can follow the *[Installation Guide](https://github.com/tensorflow/swift/blob/master/Installation.md#installation-1) on docs to install **but,**<br/>
-*According to my experience during the process, I suggest to follow below **Modified** steps which will help you in later steps and clean installation.<br/>
-
+*According to my experience during the process, I suggest following below **Modified** steps which will help you in later steps and clean installation.<br/>
+ 
 * Go to your home directory.
-
+ 
 ```console
 (base) vkartz@ubuntu-dl:~$
 ```
 * Run below command to install required dependencies.
-
+ 
 ```console
 (base) vkartz@ubuntu-dl:~$ sudo apt-get install clang libpython-dev libblocksruntime-dev
 ```
 * Visit Swift for Tensorflow Installation page on GitHub to [download the latest binary release](https://github.com/tensorflow/swift/blob/master/Installation.md#releases) which is compatible with your CUDA version.
 Downloaded file looks like <br>_swift-tensorflow-RELEASE-0.2-cuda10.0-cudnn7-ubuntu18.04.tar_
 * Then create a directory on your home directory called **swift-toolchain** and extract the downloaded file to that directory. This will create ```~/swift-toolchain/usr``` directory 
-
+ 
 ```console
 (base) vkartz@ubuntu-dl:~$ mkdir swift-toolchain
 (base) vkartz@ubuntu-dl:~$ tar -C swift-toolchain -xzf swift-tensorflow-RELEASE-0.2-cuda10.0-cudnn7-ubuntu18.04.tar.gz
 ```
-* To check whether the installation completed. Go ```~/swift-toolchain/usr/bin``` directory and run ```./swift``` REPL like below.
-
+* To check whether the installation is completed. Go ```~/swift-toolchain/usr/bin``` directory and run ```./swift``` REPL like below.
+ 
 ```console
 (base) vkartz@ubuntu-dl:~$ cd ~/swift-toolchain/usr/bin
 (base) vkartz@ubuntu-dl:~/swift-toolchain/usr/bin$ ./swift
@@ -99,19 +99,19 @@ Type :help for assistance.
 Hello world
   2>
 ```
-**If above steps went fine, You successfully installed swift and you can go to the next step :smiley:** <br/><br/>
-
+**If the above steps went fine, You successfully installed swift and you can go to the next step :smiley:** <br/><br/>
+ 
 ### Step 03: Installing Jupyter-Notebook for Swift
-In this step I am following [Google's swift-jupyter](https://github.com/google/swift-jupyter#swift-jupyter) Installation Guide with some **Modifications**.<br/>
-On the above guide there are several options availble to install Jupyter Notebook for Swift. But I strongly suggest to Install this via **Conda**.<br/>
-
+In this step, I am following [Google's swift-jupyter](https://github.com/google/swift-jupyter#swift-jupyter) Installation Guide with some **Modifications**.<br/>
+On the above guide, there are several options available to install Jupyter Notebook for Swift. But I strongly suggest installing this via **Conda**.<br/>
+ 
 * Create a new Conda Environment for swift-tensorflow
-
+ 
 ```console
 (base) vkartz@ubuntu-dl:~$ conda create -n swift-tensorflow python==3.6
 ```
 * After Environment creation is completed. Activate the swift-tensorflow environment like below. And Install required packages.
-
+ 
 ```console
 (base) vkartz@ubuntu-dl:~$ conda env list
 # conda environments:
@@ -123,7 +123,7 @@ swift-tensorflow         /home/vkartz/anaconda3/envs/swift-tensorflow
 (swift-tensorflow) vkartz@ubuntu-dl:~$ conda install jupyter numpy matplotlib
 ```
 * Clone the [Google Swift Jupyter](https://github.com/google/swift-jupyter) repository to current directory and go into the repository.
-
+ 
 ```console
 (swift-tensorflow) vkartz@ubuntu-dl:~$ git clone https://github.com/google/swift-jupyter.git
 (swift-tensorflow) vkartz@ubuntu-dl:~$ cd swift-jupyter
@@ -133,24 +133,24 @@ EnableIPythonDisplay.swift  README.md  register.py       swift_kernel.py
 KernelCommunicator.swift    docker     requirements.txt  swift_shell
 (swift-tensorflow) vkartz@ubuntu-dl:~/swift-jupyter$
 ```
-For the next step, <br> you need to find installed locations for **Swift toolchain** and **Python install location for current conda Environment**.
-
+For the next step, <br> you need to find installed locations for **Swift toolchain** and **Python installed location for current conda Environment**.
+ 
 1. _Swift toolchain location_:<br>
 If you follow Step 02 correctly your Swift toolchain location should be ```~/swift-toolchain/```
 2. _Python Installed location for Current Conda Environment_:<br>
-Run below command on your terminal to locate the location.
-
+Run the below command on your terminal to locate the location.
+ 
 ```console
 (swift-tensorflow) vkartz@ubuntu-dl:~$ conda info | grep "active env location"
   active env location : /home/vkartz/anaconda3/envs/swift-tensorflow
 ```
-
+ 
 * Then run ```python register.py --sys-prefix --swift-toolchain <path swift toolchain directory> --swift-python-library <active env location>/lib/libpython3.6m.so``` command to register the Swift Kernal. You need to fill ```<path swift toolchain directory>``` and ```<active env location>``` using above values. Example command as follows,
-
+ 
 ```console
 (swift-tensorflow) vkartz@ubuntu-dl:~/swift-jupyter$ python register.py --sys-prefix --swift-toolchain ~/swift-toolchain/ --swift-python-library ~/anaconda3/envs/swift-tensorflow/lib/libpython3.6m.so
 ```
-Response should be like below,<br>
+The response should be like below,<br>
 ``` console
 kernel.json:
 {
@@ -173,20 +173,20 @@ kernel.json:
 Registered kernel 'Swift' as 'swift'!
 (swift-tensorflow) vkartz@ubuntu-dl:~/swift-jupyter$
 ```
-
+ 
 * Now run Jupyter Notebook from your terminal
-
+ 
 ```console
 (swift-tensorflow) vkartz@ubuntu-dl:~$ jupyter-notebook
 ```
-
+ 
 Now you can open a New Jupyter Notebook as Swift: <br>
 <p align="center">
 <img src="/img/tf-swift/swift-on-jupyter.PNG" alt="New Jupyter Notebook"/>
 </p>
-
+ 
 <br>
-
+ 
 <p align="center">
 <img src="/img/tf-swift/swift-on-jupyter-2.PNG" alt="New Jupyter Notebook Test Script"/>
 </p>
