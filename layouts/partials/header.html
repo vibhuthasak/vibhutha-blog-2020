@@ -4,7 +4,7 @@
       {{- if and (.Site.Params.profile) (.Site.Params.profile.enabled)}}
       {{- $profile := .Site.Params.profile }}
       <div class="profile-block text-center">
-        <a id="avatar">
+        <a id="avatar" style="width: 50%; height: 50%; display: inline-block;">
           <img style="border-radius: 10px;" src="{{- $profile.avatar}}">
         </a>
         <h2 class="hidden-xs hidden-sm" style="font-size: 30px;">{{- $profile.author }}</h2>
