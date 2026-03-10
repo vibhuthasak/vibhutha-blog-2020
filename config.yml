@@ -55,7 +55,6 @@ menu:
 params:
   since: 2018
   dateFormatToUse: "2006-01-02"
-  enablePostCopyright: true
   # the directory under content folder that you want to render
   mainSections: ["posts"]
   # Enable/Disable menu icons
